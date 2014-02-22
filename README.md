@@ -8,3 +8,5 @@ Quick and dirty php script that shows apache error log
  
  
  However,try it in your own risk!! Accessing apache log files from php discouraged for security purpose.
+
+Based on code by http://geekery.the-kid.org/2011/06/reading-apache-logs-with-php-in-ubuntu/
