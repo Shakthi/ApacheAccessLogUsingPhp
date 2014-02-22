@@ -39,16 +39,18 @@ padding: 2px 5px;
 <table class="tbl" border="1" style='font-family:sans-serif;'>
 <tr>
 <th width="200px">Date</th>
-<th width="50px">Error Level</th>
 <th width="180px">Source</th>
 <th >Result</th>
+<th width="50px">Error Level</th>
+
+
 </tr>
 <?
 foreach(array_reverse($output) as $line) {
     $linearray = explode("[", $line);
     $errdate = explode("]",$linearray[1])[0];
     $errstatus = explode("]",$linearray[2])[0];
-    $source = explode("]",$linearray[3])[0];
+    $source = str_replace("client","",explode("]",$linearray[3])[0]);
     
     
     $index=0;
@@ -74,9 +76,11 @@ foreach(array_reverse($output) as $line) {
     ?>
     <tr<?=$style?>>
     <td><?=$errdate?></td>
+        <td><?=$source?></td>
+        <td><?=$result?></td>
     <td><?=$errstatus?></td>
-    <td><?=$source?></td>
-    <td><?=$result?></td>
+
+
 
     </tr>
     <?

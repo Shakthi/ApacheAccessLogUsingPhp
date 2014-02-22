@@ -43,8 +43,8 @@ word-wrap: break-word;
 <pre><?php// echo $output ?></pre>
 <table class="tbl" border="1" style='font-family:sans-serif;'>
 <tr>
-<th width="150px">IP</th>
 <th width="240px">Date</th>
+<th width="150px">Source</th>
 <th width="500px">Request</th>
 <th >Result</th>
 </tr>
@@ -67,8 +67,8 @@ foreach(array_reverse($output) as $line) {
     elseif ($linearray[6] == '"POST') $style = " style='background:pink;'";
     ?>
     <tr<?=$style?>>
-    <td><?=$domain?></td>
     <td><?=$date?></td>
+    <td><?=$domain?></td>
     <td><?=$request?></td>
     <td><?=$result?></td>
 
