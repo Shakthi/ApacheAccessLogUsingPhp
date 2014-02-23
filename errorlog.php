@@ -12,6 +12,10 @@
     
     
     $output = file('/var/log/apache2/error_log');
+    $limit=1000;
+    if($_GET['limit']>0)
+    $limit=$_GET['limit'];
+
 ?>
 
 
@@ -52,7 +56,7 @@ html
 </tr>
 
 <?php
-    
+    $errorindex=0;
     foreach(array_reverse($output) as $line)
     {
         $linearray = explode("[", $line);
@@ -88,7 +92,12 @@ html
 </tr>
 
 <?php
-  }
+    
+    $errorindex++;
+    if($errorindex>$limit)
+    break;
+    
+    }
 ?>
 
 

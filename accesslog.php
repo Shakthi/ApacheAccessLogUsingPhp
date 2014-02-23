@@ -11,6 +11,13 @@
         exit("Security error");
     
     $output = file('/var/log/apache2/access_log');
+    
+    $limit=1000;
+    if($_GET['limit']>0)
+        $limit=$_GET['limit'];
+    
+    
+    
 ?>
 
 
@@ -48,7 +55,7 @@ html
 <th >Result</th>
 </tr>
 <?php
-    
+    $index=0;
     foreach(array_reverse($output) as $line)
     {
         $linearray = explode(" ", $line);
@@ -59,6 +66,7 @@ html
         $request = $array2[1];
         $useragent = $array2[5];
         $result = explode(" ", $array2[2]) [1];
+        
 ?>
 
 <tr>
@@ -73,6 +81,11 @@ html
 
 </tr>
 <?php
+    
+    $index++;
+    if($index>$limit)
+    break;
+
     }
     
 ?>
