@@ -13,7 +13,7 @@
     $output = file('/var/log/apache2/access_log');
     
     $limit=1000;
-    if($_GET['limit']>0)
+    if(isset($_GET['limit']) && $_GET['limit']>0)
         $limit=$_GET['limit'];
     
     
